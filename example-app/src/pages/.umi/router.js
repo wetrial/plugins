@@ -8,7 +8,7 @@ import {
 import dynamic from 'umi/dynamic';
 import renderRoutes from 'umi/lib/renderRoutes';
 import history from '@@/history';
-import RendererWrapper0 from 'D:/Work/Project/wetrial-module-template/sample-app/src/pages/.umi/LocaleWrapper.jsx';
+import RendererWrapper0 from 'D:/Work/Project/umi-plugins-module/example-app/src/pages/.umi/LocaleWrapper.jsx';
 import { routerRedux, dynamic as _dvaDynamic } from 'dva';
 
 const Router = routerRedux.ConnectedRouter;
@@ -20,7 +20,7 @@ const routes = [
       ? _dvaDynamic({
           component: () =>
             import(/* webpackChunkName: "layouts__UserLayout" */ '../../layouts/UserLayout'),
-          LoadingComponent: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
+          LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
             .default,
         })
       : require('../../layouts/UserLayout').default,
@@ -32,7 +32,7 @@ const routes = [
           ? _dvaDynamic({
               component: () =>
                 import(/* webpackChunkName: "p__user__login" */ '../user/login'),
-              LoadingComponent: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
+              LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
                 .default,
             })
           : require('../user/login').default,
@@ -41,7 +41,7 @@ const routes = [
       {
         component: () =>
           React.createElement(
-            require('D:/Work/Project/wetrial-module-template/sample-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+            require('D:/Work/Project/umi-plugins-module/example-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
               .default,
             { pagesPath: 'src/pages', hasRoutesInConfig: true },
           ),
@@ -54,7 +54,7 @@ const routes = [
       ? _dvaDynamic({
           component: () =>
             import(/* webpackChunkName: "layouts__BlankLayout" */ '../../layouts/BlankLayout'),
-          LoadingComponent: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
+          LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
             .default,
         })
       : require('../../layouts/BlankLayout').default,
@@ -65,7 +65,7 @@ const routes = [
           ? _dvaDynamic({
               component: () =>
                 import(/* webpackChunkName: "layouts__BasicLayout" */ '../../layouts/BasicLayout'),
-              LoadingComponent: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
+              LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
                 .default,
             })
           : require('../../layouts/BasicLayout').default,
@@ -83,63 +83,95 @@ const routes = [
               ? _dvaDynamic({
                   component: () =>
                     import(/* webpackChunkName: "p__Welcome" */ '../Welcome'),
-                  LoadingComponent: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
+                  LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
                     .default,
                 })
               : require('../Welcome').default,
             exact: true,
           },
           {
+            path: '/demo-welcome',
+            name: 'welcome',
+            icon: 'smile',
+            routes: [
+              {
+                path: '/',
+                redirect: '/demo-welcome/test',
+                exact: true,
+              },
+              {
+                path: '/demo-welcome/test',
+                name: 'welcome',
+                icon: 'smile',
+                component: __IS_BROWSER
+                  ? _dvaDynamic({
+                      component: () =>
+                        import(/* webpackChunkName: "layouts__BasicLayout" */ '../Welcome'),
+                      LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
+                        .default,
+                    })
+                  : require('../Welcome').default,
+                exact: true,
+              },
+              {
+                component: () =>
+                  React.createElement(
+                    require('D:/Work/Project/umi-plugins-module/example-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                      .default,
+                    { pagesPath: 'src/pages', hasRoutesInConfig: true },
+                  ),
+              },
+            ],
+          },
+          {
+            path: '/blogs',
+            name: '例子',
+            icon: 'smile',
+            routes: [
+              {
+                path: '/blogs',
+                redirect: '/blogs/test',
+                exact: true,
+              },
+              {
+                path: '/blogs/test',
+                name: '测试页面',
+                Routes: [],
+                component: __IS_BROWSER
+                  ? _dvaDynamic({
+                      component: () =>
+                        import(/* webpackChunkName: "layouts__BasicLayout" */ 'D:\\Work\\Project\\umi-plugins-module\\example-module\\src\\pages\\Test\\index'),
+                      LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
+                        .default,
+                    })
+                  : require('D:\\Work\\Project\\umi-plugins-module\\example-module\\src\\pages\\Test\\index')
+                      .default,
+                exact: true,
+              },
+              {
+                path: '/blogs/list',
+                name: '列表',
+                component: __IS_BROWSER
+                  ? _dvaDynamic({
+                      component: () =>
+                        import(/* webpackChunkName: "layouts__BasicLayout" */ 'D:\\Work\\Project\\umi-plugins-module\\example-module\\src\\pages\\List\\index'),
+                      LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
+                        .default,
+                    })
+                  : require('D:\\Work\\Project\\umi-plugins-module\\example-module\\src\\pages\\List\\index')
+                      .default,
+                exact: true,
+              },
+            ],
+          },
+          {
             component: () =>
               React.createElement(
-                require('D:/Work/Project/wetrial-module-template/sample-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                require('D:/Work/Project/umi-plugins-module/example-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
                   .default,
                 { pagesPath: 'src/pages', hasRoutesInConfig: true },
               ),
           },
-          [
-            {
-              path: '/blogs',
-              name: '例子',
-              icon: 'smile',
-              routes: [
-                {
-                  path: '/blogs',
-                  redirect: '/blogs/test',
-                },
-                {
-                  path: 'test',
-                  name: '测试页面',
-                  Routes: [
-                    require('../../../D:/Work/Project/wetrial-module-template/lib/pages')
-                      .default,
-                  ],
-                  component: __IS_BROWSER
-                    ? dynamic({
-                        loader: () =>
-                          import(/* webpackChunkName: "undefined" */ 'D:\\Work\\Project\\wetrial-module-template\\lib\\pages\\Test\\index'),
-                        loading: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
-                          .default,
-                      })
-                    : require('D:\\Work\\Project\\wetrial-module-template\\lib\\pages\\Test\\index')
-                        .default,
-                },
-                {
-                  path: 'list',
-                  name: '列表',
-                  component: __IS_BROWSER
-                    ? dynamic({
-                        loader: () =>
-                          import(/* webpackChunkName: "undefined" */ 'D:\\Work\\Project\\wetrial-module-template\\lib\\pages\\List\\index'),
-                        loading: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
-                          .default,
-                      })
-                    : require('D:\\Work\\Project\\wetrial-module-template\\lib\\pages\\List\\index')
-                        .default,
-                },
-              ],
-            },
-          ],
         ],
       },
       {
@@ -147,7 +179,7 @@ const routes = [
           ? _dvaDynamic({
               component: () =>
                 import(/* webpackChunkName: "p__404" */ '../404'),
-              LoadingComponent: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
+              LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
                 .default,
             })
           : require('../404').default,
@@ -156,7 +188,7 @@ const routes = [
       {
         component: () =>
           React.createElement(
-            require('D:/Work/Project/wetrial-module-template/sample-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+            require('D:/Work/Project/umi-plugins-module/example-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
               .default,
             { pagesPath: 'src/pages', hasRoutesInConfig: true },
           ),
@@ -167,7 +199,7 @@ const routes = [
     component: __IS_BROWSER
       ? _dvaDynamic({
           component: () => import(/* webpackChunkName: "p__404" */ '../404'),
-          LoadingComponent: require('D:/Work/Project/wetrial-module-template/sample-app/src/components/PageLoading/index')
+          LoadingComponent: require('D:/Work/Project/umi-plugins-module/example-app/src/components/PageLoading/index')
             .default,
         })
       : require('../404').default,
@@ -176,7 +208,7 @@ const routes = [
   {
     component: () =>
       React.createElement(
-        require('D:/Work/Project/wetrial-module-template/sample-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+        require('D:/Work/Project/umi-plugins-module/example-app/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
           .default,
         { pagesPath: 'src/pages', hasRoutesInConfig: true },
       ),

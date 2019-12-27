@@ -18,8 +18,10 @@ export default function(api: IApi, options: IOption) {
     api.rebuildTmpFiles('umi-plugins-module:option change');
   });
 
+  api.log.log(`addPageWatch:${resolve(paths.absSrcPath, '../lib/*.js')}`);
   // 如果开发模式下，则监听文件改动
   if (options.modules.filter(m => m.startsWith('.')).length > 0) {
+    api.log.log(`in addPageWatch:${resolve(paths.absSrcPath, '../lib/*.js')}`);
     api.addPageWatcher([resolve(paths.absSrcPath, '../lib/*.js')]);
   }
 

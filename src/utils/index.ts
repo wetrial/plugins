@@ -38,7 +38,7 @@ export function getModuleRoutes(module: string, absRootPath: string, pageModel: 
   const originRoutes = require(join(routeModuleAbsPath, 'routes')).default;
   // 递归修改里面的路由路径为绝对路径,页面使用lib或者源码目录(如果有传入)
   const moduleAbsPath = getModuleAbsolutePath(module, absRootPath, pageModel);
-  const absRoutes = originRoutes.map(route => dgConvertToAbsRoutePath(route, moduleAbsPath));
+  const absRoutes = originRoutes.map(route => dgConvertToAbsRoutePath(route, moduleAbsPath, '/'));
   return absRoutes;
 }
 
@@ -68,20 +68,35 @@ function getModuleAbsolutePath(module: string, absRootPath: string, pageModel: s
  * @param itemRoute 路由项(路由的地址是相对于pages文件夹的)
  * @param libRootPath 绝对路径根路径
  */
-function dgConvertToAbsRoutePath(itemRoute: any, libRootPath: string) {
+function dgConvertToAbsRoutePath(itemRoute: any, libRootPath: string, parentPath: string) {
   const newItemRoute: any = { ...itemRoute };
+  // 处理component路径
   if (newItemRoute.component) {
     newItemRoute.component = resolve(libRootPath, './pages', newItemRoute.component);
+  } else if (newItemRoute.redirect) {
+    // 如果是默认redirect跳转的，则设置exact
+    newItemRoute.exact = true;
   }
+
+  // 处理Routes路径
   if (newItemRoute.Routes instanceof Array) {
     newItemRoute.Routes = newItemRoute.Routes.filter(m => !!m).map(item =>
       resolve(libRootPath, './pages', item),
     );
   }
+
+  // 处理路由拼接父级
+  if (newItemRoute.path && !newItemRoute.path.startsWith('/')) {
+    newItemRoute.path = `${parentPath}${newItemRoute.path}`;
+  }
+
+  // 处理子路由
   if (newItemRoute.routes) {
     newItemRoute.routes = newItemRoute.routes.map((sItem: any) =>
-      dgConvertToAbsRoutePath(sItem, libRootPath),
+      dgConvertToAbsRoutePath(sItem, libRootPath, newItemRoute.path),
     );
+  } else if (!newItemRoute.redirect) {
+    newItemRoute.exact = true;
   }
   return newItemRoute;
 }

@@ -20,10 +20,10 @@ export function _onCreate() {
     app.use(plugin);
   });
   
-  app.model({ namespace: 'global', ...(require('D:/Work/Project/wetrial-module-template/sample-app/src/models/global.ts').default) });
-app.model({ namespace: 'login', ...(require('D:/Work/Project/wetrial-module-template/sample-app/src/models/login.ts').default) });
-app.model({ namespace: 'setting', ...(require('D:/Work/Project/wetrial-module-template/sample-app/src/models/setting.ts').default) });
-app.model({ namespace: 'user', ...(require('D:/Work/Project/wetrial-module-template/sample-app/src/models/user.ts').default) });
+  app.model({ namespace: 'global', ...(require('D:/Work/Project/umi-plugins-module/example-app/src/models/global.ts').default) });
+app.model({ namespace: 'login', ...(require('D:/Work/Project/umi-plugins-module/example-app/src/models/login.ts').default) });
+app.model({ namespace: 'setting', ...(require('D:/Work/Project/umi-plugins-module/example-app/src/models/setting.ts').default) });
+app.model({ namespace: 'user', ...(require('D:/Work/Project/umi-plugins-module/example-app/src/models/user.ts').default) });
   return app;
 }
 

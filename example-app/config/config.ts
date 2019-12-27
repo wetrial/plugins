@@ -53,7 +53,7 @@ const plugins: IPlugin[] = [
   ],
   [
     // eslint-disable-next-line global-require
-    join(__dirname, '..', require('../package').main || 'index.js'),
+    '../lib/index.js',
     {
       modules: ['../example-module'],
       mountPaths: ['/', '/'],
@@ -99,6 +99,23 @@ export default {
               name: 'welcome',
               icon: 'smile',
               component: './Welcome',
+            },
+            {
+              path: '/demo-welcome',
+              name: 'welcome',
+              icon: 'smile',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/demo-welcome/test',
+                },
+                {
+                  path: 'test',
+                  name: 'welcome',
+                  icon: 'smile',
+                  component: './Welcome',
+                },
+              ],
             },
             // {
             //   path: '/blogsa',
