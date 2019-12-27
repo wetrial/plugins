@@ -1,1 +1,14 @@
 /node_modules
+/es
+/lib
+/dist
+/yarn.lock
+
+/example-app/node_modules
+/example-app/yarn.lock
+
+/example-module/node_modules
+/example-module/lib
+/example-module/es
+/example-module/dist
+/example-module/yarn.lock
