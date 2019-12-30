@@ -1,11 +1,12 @@
 /node_modules
 /yarn.lock
 /package-lock.json
+/lib
+/es
 /example/es
 /example/lib
 /example/node_modules
-/example/sample-app/node_modules
-/example/sample-app/yarn.lock
-/example/pages/.umi
-/example/pages/.umi-production
-/lib
+/example/app/node_modules
+/example/app/yarn.lock
+/example/app/pages/.umi
+/example/app/pages/.umi-production

@@ -10,8 +10,8 @@
   },
   "repository": "https://github.com/wetrial/Wetrial-Module-Template",
   "scripts": {
-    "start": "concurrently \"yarn build\" \"yarn start1\"",
-    "start1": "cross-env APP_ROOT=sample-app APP_TYPE=site umi dev",
+    "start": "concurrently \"yarn build\" \"yarn start:app\"",
+    "start:app": "cross-env APP_ROOT=app APP_TYPE=site umi dev",
     "build": "father-build build --watch",
     "test": "umi test",
     "patch": "yarn version --patch && git push origin master && git push origin --tags",

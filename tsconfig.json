@@ -14,5 +14,7 @@
     "noUnusedLocals": true,
     "experimentalDecorators": true,
     "declaration": false
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "lib", "es", "dist", "**/__tests__", "**/__test__"]
 }

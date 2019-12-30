@@ -10,6 +10,12 @@ const blogs: IRoute[] = [
     routes: [
       { path: '/blogs', redirect: '/blogs/test' },
       {
+        path: '/blogs/dashboard',
+        name: '看板1',
+        // authority: Permissions.blogs.base.permission,
+        component: './dashboard',
+      },
+      {
         path: '/blogs/test',
         name: '测试页面',
         Routes: [],
