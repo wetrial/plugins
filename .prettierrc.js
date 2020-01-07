@@ -1,4 +1,4 @@
-const fabric = require('@umijs/fabric');
+const fabric = require('@wetrial/fabric');
 
 module.exports = {
   ...fabric.prettier,

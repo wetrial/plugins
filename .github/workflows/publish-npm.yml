@@ -17,7 +17,7 @@ jobs:
       - name: Publish to NPMJS
         run: |
           npm install
-          npm build
+          npm run build
           npm publish --access public
         env:
           CI: true
