@@ -1,0 +1,36 @@
+{
+  "name": "@wetrial/plugin-module",
+  "version": "0.0.1",
+  "description": "@wetrial/plugin-module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wetrial/plugins"
+  },
+  "keywords": [
+    "umi"
+  ],
+  "authors": [
+    "xiexingen <1002275364@qq.com> (https://github.com/xiexingen)"
+  ],
+  "license": "MIT",
+  "bugs": "http://github.com/wetrial/plugins/issues",
+  "homepage": "https://github.com/wetrial/plugins/tree/master/packages/plugin-locale#readme",
+  "peerDependencies": {
+    "umi": "3.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "warning": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/warning": "^3.0.0"
+  }
+}
